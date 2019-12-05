@@ -1,29 +1,20 @@
 const fs = require('fs');
-const sol1 = require('./solution1');
+const solution1 = require('./solution1.js');
 
-
-const walkTree = function(input){
-    if(Math.floor(input)<=0){
-        return 0
+function walkTree(input){
+    let fuel = solution1.findMass(input);
+    let totalFuel = fuel;
+    while(solution1.findMass(fuel)>=0){
+        fuel = solution1.findMass(fuel);
+        console.log(`Fuel is: ${fuel}`);
+        totalFuel+=fuel
     }
-    else{
-        return walkTree(sol1.findMass(input))
-    }
+    return totalFuel
 }
 
-fs.readFile('questions/day1input.txt', 'utf8', (err, data)=>{
-    const lines = data.split('\n');
-    const modules = lines.map(v=>+(v));
+modules = fs.readFileSync('questions/day1input.txt', 'utf8').split('\n').map(v=>+(v));
 
-    const moduleRequirements = modules.map(walkTree)
+const sum = modules.map(walkTree).reduce((a,i)=>a+i);
 
-    console.log(moduleRequirements);
-
-
-
-    // const fuelRequirements = modules.map(findMass);
-    // const totalFuel = fuelRequirements.reduce((a,i)=>a+i);
-    // console.log(`Total Fuel Requirements were: ${totalFuel}.`);
-});
-
+console.log(`The sum is: ${sum}`);
 

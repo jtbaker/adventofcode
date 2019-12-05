@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-export function findMass(input){
+const findMass = function(input){
     return Math.floor(input/3)-2
 }
 
@@ -12,4 +12,13 @@ function q1p1(){
         const totalFuel = fuelRequirements.reduce((a,i)=>a+i);
         console.log(`Total Fuel Requirements were: ${totalFuel}.`);
     })  
+}
+
+// export default {
+//     findMass: findMass
+// }
+
+
+module.exports = {
+    findMass: findMass
 }
