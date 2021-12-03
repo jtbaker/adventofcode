@@ -5,18 +5,11 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path/filepath"
 	"strconv"
 )
 
 func main() {
-	ex, err := os.Executable()
-	if err != nil {
-		log.Fatal("Problem finding the executable")
-	}
-	dir := filepath.Dir(ex)
-	path := fmt.Sprintf("%s/input.txt", dir)
-	file, err := os.Open(path)
+	file, err := os.Open("./input.txt")
 	if err != nil {
 		log.Fatal("Error opening the file.")
 	}
