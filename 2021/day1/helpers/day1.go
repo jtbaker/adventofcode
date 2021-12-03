@@ -37,7 +37,7 @@ func FindLinesGreaterThanLast(inputs []float64) []float64 {
 	return result
 }
 
-func Solution(file string) int {
+func Part1(file string) int {
 	var inputs, results []float64
 
 	inputs = LoadLines(file)
@@ -45,4 +45,28 @@ func Solution(file string) int {
 	results = FindLinesGreaterThanLast(inputs)
 
 	return len(results)
+}
+
+func Sum(slice []float64) float64 {
+	sum := float64(0)
+	for _, v := range slice {
+		sum += v
+	}
+	return sum
+}
+
+func Part2(file string) int {
+	var inputs []float64
+	var sums []float64
+
+	inputs = LoadLines(file)
+	for i := 3; i <= len(inputs); i++ {
+		s := Sum(inputs[i-3 : i])
+		sums = append(sums, s)
+	}
+
+	res := FindLinesGreaterThanLast(sums)
+
+	return len(res)
+
 }
