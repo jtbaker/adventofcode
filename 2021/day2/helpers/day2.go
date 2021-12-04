@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -43,11 +42,9 @@ type Position struct {
 func (p *Position) Move(move Move) {
 	switch move.direction {
 	case up:
-		if (p.Depth + move.distance) <= 0 {
-			p.Depth += move.distance
-		}
-	case down:
 		p.Depth -= move.distance
+	case down:
+		p.Depth += move.distance
 	case forward:
 		p.Horizontal += move.distance
 	}
@@ -93,6 +90,5 @@ func Part1(in string) int {
 	}
 
 	var product = position.Horizontal * position.Depth
-	var abs = math.Abs(float64(product))
-	return int(abs)
+	return product
 }
