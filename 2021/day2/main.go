@@ -12,7 +12,11 @@ func main() {
 
 	flag.Parse()
 
-	result := helpers.Part1(*filename)
+	part1result := helpers.Part1(*filename)
 
-	fmt.Printf("Part 1: %v\n", result)
+	fmt.Printf("Part 1: %v\n", part1result)
+
+	part2result := helpers.Part2(*filename)
+
+	fmt.Printf("Part 2: %v\n", part2result)
 }

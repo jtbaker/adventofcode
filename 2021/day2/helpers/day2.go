@@ -37,6 +37,7 @@ func parseMove(in string) (Move, error) {
 type Position struct {
 	Horizontal int
 	Depth      int
+	Aim        int
 }
 
 func (p *Position) Move(move Move) {
@@ -47,6 +48,18 @@ func (p *Position) Move(move Move) {
 		p.Depth += move.distance
 	case forward:
 		p.Horizontal += move.distance
+	}
+}
+
+func (p *Position) MakeAim(move Move) {
+	switch move.direction {
+	case up:
+		p.Aim -= move.distance
+	case down:
+		p.Aim += move.distance
+	case forward:
+		p.Depth += p.Aim * move.distance
+		p.Move(move)
 	}
 }
 
@@ -91,4 +104,15 @@ func Part1(in string) int {
 
 	var product = position.Horizontal * position.Depth
 	return product
+}
+
+func Part2(in string) int {
+	moves := ParseInput(in)
+	position := InitializePosition()
+
+	for _, move := range moves {
+		position.MakeAim(move)
+	}
+
+	return position.Horizontal * position.Depth
 }
