@@ -3,9 +3,12 @@ name: Go
 on:
   push:
     branches: [ main ]
+    paths:
+        - 2021/**
   pull_request:
     branches: [ main ]
-
+    paths:
+        - 2021/**
 jobs:
 
   go-tests:

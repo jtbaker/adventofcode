@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Root",
+			"path": ".."
+		},
+		{
+			"name": "2024",
+			"path": "../2024"
+		}
+	],
+	"settings": {}
+}

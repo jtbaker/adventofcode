@@ -1,0 +1,25 @@
+name: 2024 CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+        - 2024/**
+  pull_request:
+    branches: [ main ]
+    paths:
+        - 2024/**
+jobs:
+  rust-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Rust
+        uses: moonrepo/setup-rust@v1
+        with:
+          components: rustfmt
+
+      - name: Run Cargo Command
+        working-directory: ./2024
+        run: cargo run --package advent-of-code-2024 --bin advent-of-code-2024 --quiet
