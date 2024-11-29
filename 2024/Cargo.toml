@@ -9,6 +9,5 @@ common = { path = "./common"}
 
 [workspace]
 members = [ 
-	"common",
-	"day01",
+	"common"
 ]
