@@ -23,6 +23,3 @@ jobs:
       - name: Run Cargo Command
         working-directory: ./2024
         run: cargo run --package advent-of-code-2024 --bin advent-of-code-2024 --quiet
-
-
-# command: cargo run --package advent-of-code-2024 --bin advent-of-code-2024 --quiet
