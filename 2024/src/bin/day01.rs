@@ -7,7 +7,6 @@ fn solve_day01() -> i32 {
     let input = common::read_input("data/inputs/01.txt");
     let mut left_list = Vec::<i32>::new();
     let mut right_list = Vec::<i32>::new();
-    // let mut diffs = Vec::<i32>::new();
     let mut diff_sum: i32 = 0;
     for line in input.lines() {
         let mut row = line.split_whitespace();
