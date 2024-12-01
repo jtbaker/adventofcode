@@ -25,7 +25,7 @@ fn main() {
 
                 // Write results to stdout if they exist
                 if !output.stdout.is_empty() {
-                    println!("{}: {}", package_name, String::from_utf8_lossy(&output.stdout));
+                    println!("{}", String::from_utf8_lossy(&output.stdout));
                 }
             }
             Err(e) => println!("Error matching path: {}", e),
