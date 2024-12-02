@@ -1,24 +1,35 @@
+use std::io::{self, BufRead};
+
 use common;
-fn main() {
-    println!("Solution for Day 01: {}", solve_day01());
+fn main() -> Result<(), io::Error> {
+    let result = solve_day01()?;
+    println!("Solution for Day 01: {}", result);
+    Ok(())
 }
 
-fn solve_day01() -> i32 {
-    let input = common::read_input("data/inputs/01.txt");
+fn solve_day01() -> Result<i32, std::io::Error> {
+    let input = common::read_input("data/inputs/01.txt")?;
     let mut left_list = Vec::<i32>::new();
     let mut right_list = Vec::<i32>::new();
     let mut diff_sum: i32 = 0;
     for line in input.lines() {
-        let mut row = line.split_whitespace();
-        if let(Some(first), Some(second)) = (row.next(), row.next()) {
-            match first.parse::<i32>() {
-                Ok(number)=> left_list.push(number),
-                Err(e)=> println!("Failed to parse number: {}", e)
-            }
-            match second.parse::<i32>() {
-                Ok(number)=> right_list.push(number),
-                Err(e)=> println!("Failed to parse number: {}", e)
-            }
+        match line {
+            Ok(line) => {
+                let mut row = line.split_whitespace();
+                if let(Some(first), Some(second)) = (row.next(), row.next()) {
+                    match first.parse::<i32>() {
+                        Ok(number)=> left_list.push(number),
+                        Err(e)=> println!("Failed to parse number: {}", e)
+                    }
+                    match second.parse::<i32>() {
+                        Ok(number)=> right_list.push(number),
+                        Err(e)=> println!("Failed to parse number: {}", e)
+                    }
+                }
+            },
+            Err(err) => {
+                eprintln!("Error: {}", err);
+            },
         }
     }
     left_list.sort();
@@ -28,5 +39,5 @@ fn solve_day01() -> i32 {
         let diff = (i2 - i1).abs();
         diff_sum += diff;
     }
-    return diff_sum;
+    return Ok(diff_sum);
 }
