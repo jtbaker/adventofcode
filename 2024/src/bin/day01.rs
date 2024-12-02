@@ -16,20 +16,20 @@ fn solve_day01() -> Result<i32, std::io::Error> {
         match line {
             Ok(line) => {
                 let mut row = line.split_whitespace();
-                if let(Some(first), Some(second)) = (row.next(), row.next()) {
+                if let (Some(first), Some(second)) = (row.next(), row.next()) {
                     match first.parse::<i32>() {
-                        Ok(number)=> left_list.push(number),
-                        Err(e)=> println!("Failed to parse number: {}", e)
+                        Ok(number) => left_list.push(number),
+                        Err(e) => println!("Failed to parse number: {}", e),
                     }
                     match second.parse::<i32>() {
-                        Ok(number)=> right_list.push(number),
-                        Err(e)=> println!("Failed to parse number: {}", e)
+                        Ok(number) => right_list.push(number),
+                        Err(e) => println!("Failed to parse number: {}", e),
                     }
                 }
-            },
+            }
             Err(err) => {
                 eprintln!("Error: {}", err);
-            },
+            }
         }
     }
     left_list.sort();

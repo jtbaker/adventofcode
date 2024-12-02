@@ -9,9 +9,9 @@ fn main() {
     for entry in glob(pattern).expect("Failed to read glob pattern") {
         match entry {
             Ok(path) => {
-
                 // Extract the package name (e.g., "day01") from the path
-                let package_name = path.file_stem()
+                let package_name = path
+                    .file_stem()
                     .and_then(|stem| stem.to_str())
                     .unwrap_or("not found");
 

@@ -9,5 +9,7 @@
 			"path": "../2024"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"editor.formatOnSave": true
+	}
 }
