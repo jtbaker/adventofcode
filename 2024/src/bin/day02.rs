@@ -54,7 +54,6 @@ fn valid_row(inputs: Vec<i32>) -> bool {
 	for (i, item) in inputs.iter().enumerate() {
 		let l = inputs.len();
 		if i+1 == l {
-			println!("Done!");
 			break
 		}
 		let next = inputs[i+1];
