@@ -5,7 +5,7 @@ fn main() {
 	let result = solve_day02();
 	match result {
 		Ok(res)=> {
-			println!("Valid Row Count: {}", res);
+			println!("Day 2. Valid Row Count: {}", res);
 		},
 		Err(err) => {
 			eprintln!("Error: {}", err)
