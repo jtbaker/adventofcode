@@ -38,16 +38,14 @@ impl DayO2Solver {
         for line in lines.lines() {
             match line {
                 Ok(line) => {
-                    let row = line.split_whitespace();
-                    let mut contents = Vec::<i32>::new();
-                    for v in row {
-                        match v.parse::<i32>() {
-                            Ok(i) => contents.push(i),
-                            Err(err) => eprintln!("Error: {}", err),
+                    let contents = common::parse_and_convert::<i32>(line);
+                    match contents {
+                        Ok(c) => {
+                            if c.is_valid() {
+                                valid_row_count += 1;
+                            }
                         }
-                    }
-                    if contents.is_valid() {
-                        valid_row_count += 1;
+                        Err(err) => eprintln!("Failed to parse: {:?}", err),
                     }
                 }
                 Err(err) => eprintln!("Error: {}", err),
