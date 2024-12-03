@@ -1,5 +1,6 @@
 use std::fs;
 use std::io::{self, BufReader, Error};
+use std::str::FromStr;
 
 pub fn read_input(filename: &str) -> Result<BufReader<fs::File>, Error> {
     let file = fs::File::open(filename);
@@ -13,4 +14,8 @@ pub fn read_input(filename: &str) -> Result<BufReader<fs::File>, Error> {
             return Err(e);
         }
     }
+}
+
+pub fn parse_and_convert<T: FromStr>(input: String) -> Result<Vec<T>, T::Err> {
+    input.split_whitespace().map(|s| s.parse::<T>()).collect()
 }
